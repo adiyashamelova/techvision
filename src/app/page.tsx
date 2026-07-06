@@ -317,8 +317,8 @@ export default function Home() {
       <footer className="border-t border-purple-900/30 bg-[#030008] py-8 md:py-12 relative z-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-xs md:text-sm text-purple-200/40">
           <p className="text-center md:text-left mb-4 md:mb-0">© 2026 Tech Vision. Создаем цифровое будущее.</p>
-          <a href="https://instagram.com/techvisonn" target="_blank" rel="noreferrer" className="hover:text-purple-300 transition-colors font-semibold">
-            @techvisonn
+          <a href="https://instagram.com/techvision.hub" target="_blank" rel="noreferrer" className="hover:text-purple-300 transition-colors font-semibold">
+            @techvision.hub
           </a>
         </div>
       </footer>
