@@ -167,7 +167,7 @@ export default function RegistrationForm() {
           </ul>
         </div>
         <p className="mt-4 text-xs text-purple-200/50 leading-relaxed">
-          Возникли проблемы с регистрацией или оплатой? Напишите нам в Instagram: <a href="https://instagram.com/techvision_hub" target="_blank" rel="noreferrer" className="text-purple-400 hover:text-purple-300 underline">@techvisonn</a>
+          Возникли проблемы с регистрацией или оплатой? Напишите нам в Instagram: <a href="https://instagram.com/techvision.hub" target="_blank" rel="noreferrer" className="text-purple-400 hover:text-purple-300 underline">@techvision.hub</a>
         </p>
       </div>
 
