@@ -8,6 +8,13 @@ export async function POST(request: Request) {
     // 1. Извлекаем базовые текстовые данные
     const teamName = formData.get('teamName')?.toString();
     const track = formData.get('track')?.toString();
+    const promoCode = formData.get('promoCode')?.toString()?.trim(); // Извлекаем промокод
+
+    // Расчет стоимости взноса на бэкенде
+    let fee = 5000;
+    if (promoCode && promoCode.toUpperCase() === 'COVENTRY50') {
+      fee = 2500;
+    }
 
     // Капитан (Обязательный участник)
     const captain = {
@@ -60,6 +67,8 @@ export async function POST(request: Request) {
           team_name: teamName,
           track: track,
           participants: participants, 
+          promo_code: promoCode || null, // Сохраняем промокод, если он был введен
+          fee: fee,                      // Сохраняем итоговую сумму (5000 или 2500)
         }
       ]);
 
