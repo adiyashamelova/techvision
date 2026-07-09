@@ -37,7 +37,13 @@ export default function RegistrationForm() {
       });
 
       if (response.ok) {
-        setSuccess(true);
+        if (isCoventry) {
+          // Если промокод Coventry введен успешно — отправляем пользователя прямо в Google Форму
+          window.location.href = 'https://forms.gle/ntvJd1yMrgkJg1bMA';
+        } else {
+          // Для остальных участников показываем стандартный экран успеха
+          setSuccess(true);
+        }
       } else {
         const data = await response.json();
         setError(data.error || 'Произошла ошибка при регистрации. Попробуйте позже.');
@@ -59,27 +65,6 @@ export default function RegistrationForm() {
         <p className="text-purple-200/60 max-w-sm mb-6">
           Ваша команда успешно зарегистрирована.
         </p>
-
-        {/* Карточка перенаправления на Google Форму для абитуриентов Coventry */}
-        {isCoventry && (
-          <div className="bg-fuchsia-950/40 border border-fuchsia-500/40 rounded-xl p-5 text-sm text-fuchsia-200 mb-6 max-w-md text-left">
-            <p className="font-semibold text-white mb-2 flex items-center gap-2">
-              <svg className="w-5 h-5 text-fuchsia-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-              Внимание: активирована скидка Coventry
-            </p>
-            <p className="mb-4 text-purple-200/80 leading-relaxed">
-              Вы применили промокод на скидку. Чтобы подтвердить ваш статус абитуриента или студента Coventry, обязательно перейдите по ссылке ниже и загрузите подтверждающий документ.
-            </p>
-            <a
-              href="https://forms.gle/ntvJd1yMrgkJg1bMA"
-              target="_blank"
-              rel="noreferrer"
-              className="block text-center w-full bg-fuchsia-600 hover:bg-fuchsia-500 text-white font-bold py-2.5 px-4 rounded-xl transition-colors shadow-[0_0_15px_rgba(217,70,239,0.3)]"
-            >
-              Загрузить подтверждение в Google Форму
-            </a>
-          </div>
-        )}
 
         <div className="bg-purple-900/20 border border-purple-500/30 rounded-xl p-4 text-sm text-purple-200 max-w-md">
           Мы свяжемся с капитаном в Telegram в течение 24 часов для подтверждения заявки и добавления в общий чат участников. Встретимся на старте!
