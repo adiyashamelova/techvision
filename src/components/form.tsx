@@ -7,11 +7,21 @@ export default function RegistrationForm() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
   const [copied, setCopied] = useState(false);
+  
+  // Стейты для промокода
+  const [promoCode, setPromoCode] = useState('');
+  const [isCoventry, setIsCoventry] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText('4400 4300 8522 5453'); 
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handlePromoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.toUpperCase();
+    setPromoCode(value);
+    setIsCoventry(value === 'COVENTRY50');
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -49,7 +59,29 @@ export default function RegistrationForm() {
         <p className="text-purple-200/60 max-w-sm mb-6">
           Ваша команда успешно зарегистрирована.
         </p>
-        <div className="bg-purple-900/20 border border-purple-500/30 rounded-xl p-4 text-sm text-purple-200">
+
+        {/* Карточка перенаправления на Google Форму для абитуриентов Coventry */}
+        {isCoventry && (
+          <div className="bg-fuchsia-950/40 border border-fuchsia-500/40 rounded-xl p-5 text-sm text-fuchsia-200 mb-6 max-w-md text-left">
+            <p className="font-semibold text-white mb-2 flex items-center gap-2">
+              <svg className="w-5 h-5 text-fuchsia-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+              Внимание: активирована скидка Coventry
+            </p>
+            <p className="mb-4 text-purple-200/80 leading-relaxed">
+              Вы применили промокод на скидку. Чтобы подтвердить ваш статус абитуриента или студента Coventry, обязательно перейдите по ссылке ниже и загрузите подтверждающий документ.
+            </p>
+            <a
+              href="https://forms.gle/ntvJd1yMrgkJg1bMA"
+              target="_blank"
+              rel="noreferrer"
+              className="block text-center w-full bg-fuchsia-600 hover:bg-fuchsia-500 text-white font-bold py-2.5 px-4 rounded-xl transition-colors shadow-[0_0_15px_rgba(217,70,239,0.3)]"
+            >
+              Загрузить подтверждение в Google Форму
+            </a>
+          </div>
+        )}
+
+        <div className="bg-purple-900/20 border border-purple-500/30 rounded-xl p-4 text-sm text-purple-200 max-w-md">
           Мы свяжемся с капитаном в Telegram в течение 24 часов для подтверждения заявки и добавления в общий чат участников. Встретимся на старте!
         </div>
       </div>
@@ -80,6 +112,25 @@ export default function RegistrationForm() {
               <option value="Social & Human Capital">Social & Human Capital</option>
               <option value="Digital Economy & Future Tech">Digital Economy & Future Tech</option>
             </select>
+          </div>
+
+          {/* Поле Промокода */}
+          <div>
+            <label htmlFor="promoCode" className={labelClass}>Промокод (при наличии)</label>
+            <input 
+              type="text" 
+              id="promoCode" 
+              name="promoCode" 
+              value={promoCode}
+              onChange={handlePromoChange}
+              placeholder="Например: COVENTRY50" 
+              className={inputClass} 
+            />
+            {isCoventry && (
+              <p className="text-xs text-green-400 mt-1.5 flex items-center gap-1">
+                ✓ Скидка Coventry активирована! Цена снижена до 2500 тенге.
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -126,14 +177,24 @@ export default function RegistrationForm() {
         </div>
       </div>
 
-      {/* Блок 4 (Без загрузки чека) */}
+      {/* Блок 4 */}
       <div className={sectionClass}>
         <h3 className={sectionTitleClass}>4. Регистрационный взнос</h3>
         
         <div className="bg-purple-900/10 p-6 rounded-2xl border border-purple-500/20 mb-5">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-5 gap-4">
             <div>
-              <p className="text-white font-bold text-lg mb-1">5000 тенге <span className="text-fuchsia-400 text-sm font-medium ml-2">(за всю команду)</span></p>
+              <p className="text-white font-bold text-lg mb-1">
+                {isCoventry ? (
+                  <>
+                    <span className="line-through text-purple-200/40 mr-2">5000 тенге</span>
+                    <span className="text-green-400">2500 тенге</span>
+                  </>
+                ) : (
+                  "5000 тенге"
+                )}
+                <span className="text-fuchsia-400 text-sm font-medium ml-2">(за всю команду)</span>
+              </p>
               <p className="text-sm text-purple-200/80">Получатель: <span className="font-semibold text-white">ADIYA SHAMELOVA (Kaspi Gold)</span></p>
             </div>
             
@@ -153,7 +214,7 @@ export default function RegistrationForm() {
                   </>
                 ) : (
                   <>
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
                     Копировать
                   </>
                 )}
@@ -167,7 +228,7 @@ export default function RegistrationForm() {
           </ul>
         </div>
         <p className="mt-4 text-xs text-purple-200/50 leading-relaxed">
-          Возникли проблемы с регистрацией или оплатой? Напишите нам в Instagram: <a href="https://instagram.com/techvision.hub" target="_blank" rel="noreferrer" className="text-purple-400 hover:text-purple-300 underline">@techvision.hub</a>
+          Возникли проблемы с регистрацией или оплатой? Напишите нам в Instagram: <a href="https://instagram.com/techvisonn" target="_blank" rel="noreferrer" className="text-purple-400 hover:text-purple-300 underline">@techvisonn</a>
         </p>
       </div>
 
