@@ -123,7 +123,7 @@ export default function RegistrationForm() {
               name="promoCode" 
               value={promoCode}
               onChange={handlePromoChange}
-              placeholder="Например: COVENTRY50" 
+              placeholder="Например: SIGMABOY" 
               className={inputClass} 
             />
             {isCoventry && (
