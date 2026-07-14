@@ -132,7 +132,7 @@ export default function CoventryRegistrationForm() {
                   2500 тенге
                 </span>
                 <span className="text-fuchsia-400 text-xs md:text-sm font-medium bg-fuchsia-500/10 px-2.5 py-0.5 rounded-full border border-fuchsia-500/20 tracking-wide">
-                  специальная цена Coventry
+                  Специальная цена Coventry
                 </span>
               </div>
               <p className="text-sm text-purple-200/80">Получатель: <span className="font-semibold text-white">ADIYA SHAMELOVA (Kaspi Gold)</span></p>
