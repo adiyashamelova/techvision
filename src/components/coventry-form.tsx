@@ -52,7 +52,7 @@ export default function CoventryRegistrationForm() {
     <form onSubmit={handleSubmit} className="w-full">
       {/* Блок 1 */}
       <div className={sectionClass}>
-        <h3 className={sectionTitleClass}>1. Проект ( Coventry University Option )</h3>
+        <h3 className={sectionTitleClass}>1. Проект</h3>
         <div className="space-y-5">
           <div>
             <label htmlFor="teamName" className={labelClass}>Название команды</label>
