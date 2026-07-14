@@ -120,42 +120,57 @@ export default function CoventryRegistrationForm() {
       <div className={sectionClass}>
         <h3 className={sectionTitleClass}>4. Регистрационный взнос</h3>
         
-        <div className="bg-purple-900/10 p-6 rounded-2xl border border-purple-500/20 mb-5">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-5 gap-4">
+        <div className="bg-purple-900/10 p-6 rounded-2xl border border-purple-500/20 mb-5 space-y-5">
+          
+          {/* Линия цен и статуса (теперь сверху во всю ширину) */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-purple-900/20 pb-4">
+            <div className="flex items-baseline gap-3">
+              <span className="line-through text-purple-200/30 text-sm md:text-base font-normal">
+                5000 тенге
+              </span>
+              <span className="text-green-400 font-semibold text-xl md:text-2xl tracking-tight">
+                2500 тенге
+              </span>
+            </div>
+            <span className="text-fuchsia-400 text-xs md:text-sm font-medium bg-fuchsia-500/10 px-3 py-1 rounded-full border border-fuchsia-500/20 tracking-wide self-start sm:self-center">
+              Специальная цена от Coventry University
+            </span>
+          </div>
+
+          {/* Контейнер реквизитов (сетка 50/50, ничего не зажимается) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
             <div>
-              {/* ОБНОВЛЕННЫЙ БЛОК ВЫРАВНИВАНИЯ ЦЕНЫ */}
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-2">
-                <span className="line-through text-purple-200/30 text-sm md:text-base font-normal">
-                  5000 тенге
-                </span>
-                <span className="text-green-400 font-semibold text-lg md:text-xl">
-                  2500 тенге
-                </span>
-                <span className="text-fuchsia-400 text-xs md:text-sm font-medium bg-fuchsia-500/10 px-2.5 py-0.5 rounded-full border border-fuchsia-500/20 tracking-wide">
-                  Специальная цена Coventry
-                </span>
-              </div>
-              <p className="text-sm text-purple-200/80">Получатель: <span className="font-semibold text-white">ADIYA SHAMELOVA (Kaspi Gold)</span></p>
+              <p className="text-[11px] text-purple-300/40 uppercase tracking-wider mb-0.5">Получатель (Kaspi Gold)</p>
+              <p className="text-sm md:text-base font-medium text-white tracking-wide">ADIYA SHAMELOVA</p>
             </div>
             
-            <div className="bg-[#0a0212] border border-purple-500/30 rounded-xl p-1.5 flex items-center w-full md:w-auto">
-              <span className="text-white font-mono tracking-widest px-4 py-2 text-sm sm:text-base">
+            <div className="bg-[#0a0212] border border-purple-500/20 rounded-xl p-1.5 flex items-center justify-between w-full">
+              <span className="text-white font-mono tracking-widest px-3 py-2 text-sm sm:text-base selection:bg-purple-500/30">
                 4400 4300 8522 5453
               </span>
               <button
                 type="button"
                 onClick={handleCopy}
-                className="bg-purple-600 hover:bg-purple-500 text-white rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors flex items-center gap-2 ml-auto"
+                className="bg-purple-600 hover:bg-purple-500 text-white rounded-lg px-4 py-2 text-xs md:text-sm font-medium transition-colors whitespace-nowrap"
               >
                 {copied ? 'Скопировано' : 'Копировать'}
               </button>
             </div>
           </div>
           
-          <ul className="text-sm text-purple-200/70 leading-relaxed space-y-2 list-disc list-inside">
-            <li>Сделайте перевод по номеру карты в приложении вашего банка.</li>
-            <li>В поле «Сообщение» обязательно укажите <span className="text-white font-medium">название вашей команды</span>.</li>
-          </ul>
+          {/* Список инструкций */}
+          <div className="border-t border-purple-900/20 pt-4">
+            <ul className="text-xs md:text-sm text-purple-200/60 leading-relaxed space-y-2">
+              <li className="flex items-start gap-2.5">
+                <span className="text-purple-500 select-none mt-0.5">•</span>
+                <span>Сделайте перевод по номеру карты в приложении вашего банка.</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="text-purple-500 select-none mt-0.5">•</span>
+                <span>В поле «Сообщение» обязательно укажите <span className="text-white font-medium">название вашей команды</span>.</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
