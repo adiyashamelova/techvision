@@ -64,10 +64,10 @@ export default function CoventryAdmin() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-purple-900/30 pb-5">
           <div>
             <h1 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-purple-400 to-fuchsia-500 bg-clip-text text-transparent tracking-tight">
-              База Данных Coventry University Kazakhstan
+              База данных Coventry University Kazakhstan
             </h1>
             <p className="text-purple-300/50 text-sm mt-1 font-normal tracking-wide">
-              Зарегистрированные команды (промокод COVENTRY50)
+              Зарегистрированные по промокоду COVENTRY50 команды
             </p>
           </div>
           <span className="bg-green-500/10 text-green-400 px-4 py-2 rounded-xl border border-green-500/20 text-sm font-medium tracking-wide self-start sm:self-center">
