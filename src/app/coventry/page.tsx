@@ -300,10 +300,12 @@ export default function CoventryHome() {
         {/* СЕКЦИЯ РЕГИСТРАЦИИ (Coventry Form) */}
         <section id="register" className="scroll-mt-32 max-w-4xl mx-auto w-full">
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 md:mb-6">Регистрация <span className="text-fuchsia-400">Coventry University Kazakhstan</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 md:mb-6">
+  Регистрация <br />
+  <span className="text-fuchsia-400">Coventry University Kazakhstan</span>
+</h2>
             <p className="text-purple-200/60 text-base md:text-lg px-4">Специальный тариф со скидкой для абитуриентов Coventry University Kazakhstan.</p>
           </div>
-          
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-600 rounded-[2rem] md:rounded-[2.5rem] blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
             <div className="relative bg-[#07010f] border border-purple-900/50 rounded-[2rem] md:rounded-[2.5rem] p-6 sm:p-8 md:p-14 shadow-2xl">
