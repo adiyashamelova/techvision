@@ -67,7 +67,7 @@ export default function CoventryAdmin() {
               База данных Coventry University Kazakhstan
             </h1>
             <p className="text-purple-300/50 text-sm mt-1 font-normal tracking-wide">
-              Зарегистрированные по промокоду COVENTRY50 команды
+              Зарегистрированные команды
             </p>
           </div>
           <span className="bg-green-500/10 text-green-400 px-4 py-2 rounded-xl border border-green-500/20 text-sm font-medium tracking-wide self-start sm:self-center">
