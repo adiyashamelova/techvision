@@ -167,7 +167,7 @@ export default function CoventryHome() {
                 <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Призы</h3>
-              <p className="text-sm md:text-base text-purple-200/70 leading-relaxed">Общий призовой фонд хакатона — 500 000+ тенге, который будет полностью распределен между лучшими проектов финального этапа. Но это еще не всё! На протяжении всего хакатона мы будем проводить интерактивы и розыгрыши. Вы сможете выиграть крутой фирменный мерч Tech Vision, а также ценные сертификаты на профильные онлайн-курсы и обучение от наших партнеров.</p>
+              <p className="text-sm md:text-base text-purple-200/70 leading-relaxed">Общий призовой фонд хакатона — 1 000 000 тенге, а также эксклюзивные Merit Tuition Offers от Coventry University Kazakhstan! Но это еще не всё. Обо всех остальных крутых бонусах, сертификатах на курсы, стажировках и лимитированном мерче от наших партнеров мы расскажем совсем скоро! Будем раскрывать карты постепенно прямо в аккаунте @techvision.hub — включайте уведомления, это того стоит!</p>
             </div>
 
             <div className="bg-[#080112] border border-purple-900/30 p-6 md:p-8 rounded-[2rem] md:rounded-3xl hover:border-purple-500/50 transition-colors group">
@@ -274,7 +274,7 @@ export default function CoventryHome() {
                 { date: "21 июля (до 23:59)", title: "Дедлайн подачи проектов", desc: "Завершение приема решений. Команды отправляют питч-дек, краткую документацию и одно доказательство работы MVP на выбор (live-ссылку, исходный код или демо-видео).", color: "text-fuchsia-400", dot: "bg-fuchsia-500" },
                 { date: "22-23 июля", title: "Онлайн-отбор", desc: "Экспертная оценка жюри и технический фильтр. Фокус на жизнеспособности и работоспособности кода.", color: "text-purple-300", dot: "bg-purple-700" },
                 { date: "24 июля", title: "Объявление финалистов", desc: "Публикация списка команд, прошедших в очный финальный этап.", color: "text-purple-300", dot: "bg-purple-700" },
-                { date: "27 июля", title: "Гранд-финал (Астана, НУ)", desc: "Очная защита. Регламент: 5 минут на питч и демо + 2 минуты на сессию вопросов от экспертного жюри.", color: "text-indigo-400", dot: "bg-indigo-500", glow: "shadow-[0_0_20px_rgba(99,102,241,0.5)]" }
+                { date: "27 июля", title: "Гранд-финал (Астана, НУ)", desc: "Очная защита. Регламент: 4 минут на питч и демо + 2 минуты на сессию вопросов от экспертного жюри.", color: "text-indigo-400", dot: "bg-indigo-500", glow: "shadow-[0_0_20px_rgba(99,102,241,0.5)]" }
               ].map((item, idx) => (
                 <div key={idx} className="relative flex flex-col md:flex-row items-start md:items-center justify-between group pl-12 md:pl-0">
                   <div className={`w-full md:w-[45%] text-left ${idx % 2 === 0 ? 'md:text-right' : 'md:order-3'}`}>
@@ -300,8 +300,8 @@ export default function CoventryHome() {
         {/* СЕКЦИЯ РЕГИСТРАЦИИ (Coventry Form) */}
         <section id="register" className="scroll-mt-32 max-w-4xl mx-auto w-full">
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 md:mb-6">Регистрация <span className="text-fuchsia-400">Coventry</span></h2>
-            <p className="text-purple-200/60 text-base md:text-lg px-4">Специальный тариф со скидкой для абитуриентов Coventry University.</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 md:mb-6">Регистрация <span className="text-fuchsia-400">Coventry University Kazakhstan</span></h2>
+            <p className="text-purple-200/60 text-base md:text-lg px-4">Специальный тариф со скидкой для абитуриентов Coventry University Kazakhstan.</p>
           </div>
           
           <div className="relative group">
