@@ -123,11 +123,18 @@ export default function CoventryRegistrationForm() {
         <div className="bg-purple-900/10 p-6 rounded-2xl border border-purple-500/20 mb-5">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-5 gap-4">
             <div>
-              <p className="text-white font-bold text-lg mb-1">
-                <span className="line-through text-purple-200/40 mr-2">5000 тенге</span>
-                <span className="text-green-400">2500 тенге</span>
-                <span className="text-fuchsia-400 text-sm font-medium ml-2">(специальная цена Coventry)</span>
-              </p>
+              {/* ОБНОВЛЕННЫЙ БЛОК ВЫРАВНИВАНИЯ ЦЕНЫ */}
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-2">
+                <span className="line-through text-purple-200/30 text-sm md:text-base font-normal">
+                  5000 тенге
+                </span>
+                <span className="text-green-400 font-semibold text-lg md:text-xl">
+                  2500 тенге
+                </span>
+                <span className="text-fuchsia-400 text-xs md:text-sm font-medium bg-fuchsia-500/10 px-2.5 py-0.5 rounded-full border border-fuchsia-500/20 tracking-wide">
+                  специальная цена Coventry
+                </span>
+              </div>
               <p className="text-sm text-purple-200/80">Получатель: <span className="font-semibold text-white">ADIYA SHAMELOVA (Kaspi Gold)</span></p>
             </div>
             
