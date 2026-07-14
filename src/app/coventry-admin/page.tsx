@@ -1,0 +1,116 @@
+'use client';
+
+import { useState } from 'react';
+
+export default function CoventryAdmin() {
+  const [password, setPassword] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [data, setData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const res = await fetch(`/api/coventry-admin?password=${password}`);
+      if (res.ok) {
+        const json = await res.json();
+        setData(json);
+        setIsAuthenticated(true);
+      } else {
+        setError('Неверный пароль доступа!');
+      }
+    } catch (err) {
+      setError('Ошибка сети при авторизации');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-[#03000a] text-white flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-[#0d041e]/40 p-8 rounded-3xl border border-purple-900/30 backdrop-blur-xl text-center">
+          <h1 className="text-2xl font-bold mb-6 text-purple-400">Вход в Админ-панель Coventry</h1>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <input
+              type="password"
+              placeholder="Введите пароль доступа"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full bg-[#0a0212] border border-purple-900/50 rounded-xl px-4 py-3 text-purple-100 focus:outline-none focus:border-purple-500"
+              required
+            />
+            {error && <p className="text-red-400 text-sm">{error}</p>}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition"
+            >
+              {loading ? 'Вход...' : 'Войти'}
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#03000a] text-white p-6 sm:p-10">
+      <div className="max-w-7xl mx-auto space-y-6">
+        <div className="flex justify-between items-center border-b border-purple-900/30 pb-5">
+          <div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-fuchsia-500 bg-clip-text text-transparent">
+              База Данных Coventry
+            </h1>
+            <p className="text-purple-300/60 text-sm mt-1">Регистрации участников по промокоду COVENTRY50</p>
+          </div>
+          <span className="bg-green-500/10 text-green-400 px-4 py-2 rounded-xl border border-green-500/20 text-sm font-semibold">
+            Всего: {data.length} команд(ы)
+          </span>
+        </div>
+
+        <div className="overflow-x-auto bg-[#0d041e]/20 border border-purple-900/20 rounded-2xl">
+          <table className="min-w-full divide-y divide-purple-950">
+            <thead className="bg-[#0a0212]">
+              <tr>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-purple-200/50 uppercase tracking-wider">Команда / Трек</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-purple-200/50 uppercase tracking-wider">Капитан</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-purple-200/50 uppercase tracking-wider">Контакты</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-purple-200/50 uppercase tracking-wider">Состав</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-purple-950/30 bg-[#0d041e]/10">
+              {data.map((item, index) => (
+                <tr key={index} className="hover:bg-purple-950/10 transition-colors">
+                  <td className="px-6 py-4">
+                    <div className="text-sm font-bold text-white">{item.teamName}</div>
+                    <div className="text-xs text-purple-400 mt-1">{item.track}</div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="text-sm text-white font-medium">{item.captainName}</div>
+                    <div className="text-xs text-purple-300/50 mt-1">{item.captainTg}</div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="text-sm text-white">{item.captainEmail}</div>
+                    <div className="text-xs text-purple-300/50 mt-1">{item.captainPhone}</div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="text-xs text-purple-200/80 space-y-1">
+                      {item.member2Name && <div>• {item.member2Name} ({item.member2Tg})</div>}
+                      {item.member3Name && <div>• {item.member3Name} ({item.member3Tg})</div>}
+                      {item.member4Name && <div>• {item.member4Name} ({item.member4Tg})</div>}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
