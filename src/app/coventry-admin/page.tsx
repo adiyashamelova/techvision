@@ -84,29 +84,36 @@ export default function CoventryAdmin() {
               </tr>
             </thead>
             <tbody className="divide-y divide-purple-950/30 bg-[#0d041e]/10">
-              {data.map((item, index) => (
-                <tr key={index} className="hover:bg-purple-950/10 transition-colors">
-                  <td className="px-6 py-4">
-                    <div className="text-sm font-bold text-white">{item.teamName}</div>
-                    <div className="text-xs text-purple-400 mt-1">{item.track}</div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="text-sm text-white font-medium">{item.captainName}</div>
-                    <div className="text-xs text-purple-300/50 mt-1">{item.captainTg}</div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="text-sm text-white">{item.captainEmail}</div>
-                    <div className="text-xs text-purple-300/50 mt-1">{item.captainPhone}</div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="text-xs text-purple-200/80 space-y-1">
-                      {item.member2Name && <div>• {item.member2Name} ({item.member2Tg})</div>}
-                      {item.member3Name && <div>• {item.member3Name} ({item.member3Tg})</div>}
-                      {item.member4Name && <div>• {item.member4Name} ({item.member4Tg})</div>}
-                    </div>
-                  </td>
-                </tr>
-              ))}
+              {data.map((item, index) => {
+                // Вытаскиваем капитана и обычных участников из массива участников
+                const captain = item.participants?.find((p: any) => p.role === 'captain');
+                const members = item.participants?.filter((p: any) => p.role === 'member') || [];
+
+                return (
+                  <tr key={index} className="hover:bg-purple-950/10 transition-colors">
+                    <td className="px-6 py-4">
+                      <div className="text-sm font-bold text-white">{item.team_name || '—'}</div>
+                      <div className="text-xs text-purple-400 mt-1">{item.track || '—'}</div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="text-sm text-white font-medium">{captain?.name || '—'}</div>
+                      <div className="text-xs text-purple-300/50 mt-1">{captain?.telegram || '—'}</div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="text-sm text-white">{captain?.email || '—'}</div>
+                      <div className="text-xs text-purple-300/50 mt-1">{captain?.phone || '—'}</div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="text-xs text-purple-200/80 space-y-1">
+                        {members.map((m: any, idx: number) => (
+                          <div key={idx}>• {m.name} ({m.telegram || '—'})</div>
+                        ))}
+                        {members.length === 0 && <div className="text-purple-200/30">—</div>}
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
