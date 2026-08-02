@@ -317,22 +317,22 @@ export default function CoventryHome() {
       </main>
 
         {/* ПАРТНЁРЫ */}
-        <section id="partners" className="scroll-mt-32 opacity-90">
+        <section id="partners" className="scroll-mt-32">
           <div className="text-center mb-8 md:mb-10">
-            <p className="text-purple-300/40 text-[10px] sm:text-xs font-semibold uppercase tracking-widest">Наши спонсоры</p>
+            <p className="text-purple-300 text-sm sm:text-base font-bold uppercase tracking-widest">Наши спонсоры</p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-12 px-4">
             {[
               { name: "Coventry University Kazakhstan", src: "/partners/coventry.png", h: "h-10 sm:h-12 md:h-14" },
               { name: "RTeam KZ", src: "/partners/rteam.png", h: "h-10 sm:h-12 md:h-14" },
-              { name: "Kenzhekhan & Zhanar Group (K&Z)", src: "/partners/kz.png", h: "h-14 sm:h-16 md:h-20" },
+              { name: "Kenzhekhan & Zhanar Group (K&Z)", src: "/partners/kz.png", h: "h-20 sm:h-24 md:h-28" },
             ].map((p) => (
               <img
                 key={p.name}
                 src={p.src}
                 alt={p.name}
                 title={p.name}
-                className={`${p.h} w-auto object-contain opacity-90 hover:opacity-100 transition-all duration-300`}
+                className={`${p.h} w-auto object-contain opacity-100 transition-all duration-300`}
               />
             ))}
           </div>
