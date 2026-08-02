@@ -100,28 +100,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ПАРТНЁРЫ */}
-        <section id="partners" className="scroll-mt-32">
-          <div className="text-center mb-10 md:mb-14">
-            <p className="text-purple-300/60 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">Наши партнёры</p>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 px-4">
-            {[
-              { name: "Coventry University Kazakhstan", src: "/partners/coventry.png" },
-              { name: "RTeam KZ", src: "/partners/rteam.png" },
-              { name: "Kenzhekhan & Zhanar Group (K&Z)", src: "/partners/kz.png" },
-            ].map((p) => (
-              <img
-                key={p.name}
-                src={p.src}
-                alt={p.name}
-                title={p.name}
-                className="h-10 sm:h-12 md:h-14 w-auto object-contain opacity-80 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300"
-              />
-            ))}
-          </div>
-        </section>
-
         {/* О ХАКАТОНЕ */}
         <section id="about" className="scroll-mt-32">
           <div className="bg-[#0b0316] border border-purple-900/40 rounded-[2rem] md:rounded-[3rem] p-6 sm:p-10 md:p-16 shadow-2xl relative overflow-hidden">
@@ -335,6 +313,28 @@ export default function Home() {
         </section>
 
       </main>
+
+        {/* ПАРТНЁРЫ */}
+        <section id="partners" className="scroll-mt-32 opacity-90">
+          <div className="text-center mb-8 md:mb-10">
+            <p className="text-purple-300/40 text-[10px] sm:text-xs font-semibold uppercase tracking-widest">Наши спонсоры</p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-12 px-4">
+            {[
+              { name: "Coventry University Kazakhstan", src: "/partners/coventry.png", h: "h-10 sm:h-12 md:h-14" },
+              { name: "RTeam KZ", src: "/partners/rteam.png", h: "h-10 sm:h-12 md:h-14" },
+              { name: "Kenzhekhan & Zhanar Group (K&Z)", src: "/partners/kz.png", h: "h-14 sm:h-16 md:h-20" },
+            ].map((p) => (
+              <img
+                key={p.name}
+                src={p.src}
+                alt={p.name}
+                title={p.name}
+                className={`${p.h} w-auto object-contain opacity-90 hover:opacity-100 transition-all duration-300`}
+              />
+            ))}
+          </div>
+        </section>
 
       <footer className="border-t border-purple-900/30 bg-[#030008] py-8 md:py-12 relative z-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-xs md:text-sm text-purple-200/40">
